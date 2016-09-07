@@ -1,0 +1,23 @@
+{
+  "name": "hatena",
+  "version": "0.0.1",
+  "description": "",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/quotto/HatenaBreadcrumbPlus.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/quotto/HatenaBreadcrumbPlus/issues"
+  },
+  "homepage": "https://github.com/quotto/HatenaBreadcrumbPlus",
+  "devDependencies": {
+    "grunt": "~1.0.1",
+    "grunt-contrib-uglify": "~2.0.0"
+  }
+}
