@@ -1,11 +1,21 @@
 module.exports = function(grunt) {
   grunt.initConfig({
+    cssmin:{
+      minify:{
+        files:{
+          'css/fulldisplay.min.css':'css/fulldisplay.css',
+          'css/parentdisplay.min.css':'css/parentdisplay.css'
+        }
+      }
+    },
     uglify:{
-      build:{
-        src:'src/breadcrumb.js',
-        dest:'breadcrumb.js'
+      dist:{
+        files:{
+          'js/breadcrumb.min.js':'js/breadcrumb.js'
+        }
       }
     }
   });
 grunt.loadNpmTasks('grunt-contrib-uglify');
+grunt.loadNpmTasks('grunt-contrib-cssmin');
 }

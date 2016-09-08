@@ -22,7 +22,6 @@ function remapArticleCategory(categories) {
     index+=1;
   }
 
-
   breadcrumb_array = categories[index].text.split('-');
   remapBreadcrumb(breadcrumb_array)
 
@@ -59,17 +58,17 @@ function remapArchiveCategory(categories) {
   }
 }
 
-var categories = $('#main-inner > article.entry > div.entry-inner > header > div.entry-categories > a');
-if(categories.length>0) {
-  remapArticleCategory(categories);
+var $entry_categories = $('#main-inner > article.entry > div.entry-inner > header > div.entry-categories > a');
+if($entry_categories.length>0) {
+  remapArticleCategory($entry_categories);
 }
-var $archives = $('#main-inner > div.archive-entries > section');
-if($archives.length > 0) {
-  $before_breadcrumb = $('#top-box > div.breadcrumb > div.breadcrumb-inner > span.breadcrumb-child:first');
-  breadcrumb_array = $before_breadcrumb.find('span').text().split('-');
-  remapCategoryBreadcrumb(breadcrumb_array);
+var $archive_entries = $('#main-inner > div.archive-entries > section');
+if($archive_entries.length > 0) {
+  $breadcrumb_child = $('#top-box > div.breadcrumb > div.breadcrumb-inner > span.breadcrumb-child:first');
+  breadcrumbs = $breadcrumb_child.find('span').text().split('-');
+  remapCategoryBreadcrumb(breadcrumbs);
 
-  $archives.each(function(){
+  $archive_entries.each(function(){
     remapArchiveCategory($(this).find('div.categories > a'));
   });
 }
@@ -79,17 +78,19 @@ if(typeof $hatena_module_category != "undefined") {
   $li = $hatena_module_category.find('li');
   $li.each(function(index,category){
     $a = $(category).find('a');
-    // url = $a.attr('href');
-    // category_name = decodeURI(url.substr(url.lastIndexOf('/')+1));
     category_name = $a.text();
     breadcrumb = category_name.split('-');
     if(breadcrumb.length > 1) {
       indent = 10 * (breadcrumb.length-1);
       $(category).css('padding-left',indent+'px');
+      $(category).attr('class','hatena-breadcrumb-plus-child'); 
       $a.text('- '+breadcrumb[breadcrumb.length-1]);
     }
-    else if(typeof $li[index-1] != "undefined") {
-      $($li[index-1]).css('border-bottom','1px solid #dddddd');
+    else {
+      $(category).attr('class','hatena-breadcrumb-plus-parent');
+      if(typeof $li[index-1] != "undefined") {
+        $($li[index-1]).attr('class',$($li[index-1]).attr('class')+' on-border');
+      }
     }
   });
 }
