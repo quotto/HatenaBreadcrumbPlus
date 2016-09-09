@@ -57,7 +57,7 @@ function remapArchiveCategory(categories) {
     categories[i].text=category_branch[category_branch.length-1];
   }
 }
-
+$(document).ready(function(){
 var $entry_categories = $('#main-inner > article.entry > div.entry-inner > header > div.entry-categories > a');
 if($entry_categories.length>0) {
   remapArticleCategory($entry_categories);
@@ -93,4 +93,4 @@ if(typeof $hatena_module_category != "undefined") {
       }
     }
   });
-}
+}});
