@@ -10,6 +10,6 @@
   border: none;
   transition: 1s ease;
 }
-.hatena-module-category ul li.on-boerder {
+.hatena-module-category ul li.on-border {
   border-bottom:1px solid #dddddd;
 }
