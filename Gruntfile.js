@@ -4,14 +4,17 @@ module.exports = function(grunt) {
       minify:{
         files:{
           'css/fulldisplay.min.css':'css/fulldisplay.css',
-          'css/parentdisplay.min.css':'css/parentdisplay.css'
+          'css/parentdisplay.min.css':'css/parentdisplay.css',
+          'v1.1/css/fulldisplay.min.css':'v1.1/css/fulldisplay.css'
         }
       }
     },
     uglify:{
       dist:{
         files:{
-          'js/breadcrumb.min.js':'js/breadcrumb.js'
+          'js/breadcrumb.min.js':'js/breadcrumb.js',
+          'v1.1/js/breadcrumb.min.js':'v1.1/js/breadcrumb.js',
+          'v1.1/js/category_archive.min.js':'v1.1/js/category_archive.js'
         }
       }
     }
