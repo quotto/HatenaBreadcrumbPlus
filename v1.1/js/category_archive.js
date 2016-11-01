@@ -18,7 +18,7 @@ function processArchive(idx,plevel,$ul) {
 
     // 1階層目のカテゴリであれば下線を設定
     if(level == 1 && idx > 0) {
-      $li.attr('class',$($all_li[idx-1]).attr('class')+' on-border');
+      $li.attr('class','on-border');
     }
 
     // idxの階層 < 親階層であればループを抜ける
