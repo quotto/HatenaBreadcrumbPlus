@@ -2,8 +2,10 @@
   display: block;
   padding: 8px 0;
   border: 0;
+  list-style-type:none;
 }
 .hatena-module-category ul li a {
+  display: inline-block;
   padding: 0px;
   text-decoration: none;
   color: #000;
@@ -20,7 +22,6 @@ ul.hatena-breadcrumb-plus-child1 {
 
 ul.hatena-breadcrumb-plus-child2 {
   padding-left:15px;
-  list-style-type:square;
 }
 
 .hatena-breadcrumb-plus-toggle-button {
