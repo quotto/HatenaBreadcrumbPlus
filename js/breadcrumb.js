@@ -62,14 +62,14 @@ var $entry_categories = $('#main-inner > article.entry > div.entry-inner > heade
 if($entry_categories.length>0) {
   remapArticleCategory($entry_categories);
 }
-var $archive_entries = $('#main-inner > div.archive-entries > section');
+var $archive_entries = $('#main-inner > div.archive-entries');
 if($archive_entries.length > 0) {
   $breadcrumb_child = $('#top-box > div.breadcrumb > div.breadcrumb-inner > span.breadcrumb-child:first');
   breadcrumbs = $breadcrumb_child.find('span').text().split('-');
   remapCategoryBreadcrumb(breadcrumbs);
 
   $archive_entries.each(function(){
-    remapArchiveCategory($(this).find('div.categories > a'));
+    remapArchiveCategory($(this).find('section > div.categories > a'));
   });
 }
 
