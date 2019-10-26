@@ -19,5 +19,9 @@
   "devDependencies": {
     "grunt": "~1.0.1",
     "grunt-contrib-uglify": "~2.0.0"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "http": "0.0.0"
   }
 }
