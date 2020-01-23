@@ -17,8 +17,6 @@
   },
   "homepage": "https://github.com/quotto/HatenaBreadcrumbPlus",
   "devDependencies": {
-    "grunt": "~1.0.1",
-    "grunt-contrib-uglify": "~2.0.0",
     "uglify-js": "^3.7.6"
   },
   "dependencies": {
