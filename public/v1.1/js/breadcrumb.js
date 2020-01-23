@@ -63,15 +63,16 @@ function remapCategoryBreadcrumb(breadcrumb) {
       var category_url = 'https://'+host+'/archive/category/'+url_category.join('-');
       new_breadcrumb_html += '<span class="breadcrumb-child"><a class="breadcrumb-child-link" href="'+category_url+'">'+breadcrumb[i]+'</span></a></span>';
       new_breadcrumb_html += '<span class="breadcrumb-gt"> &gt;</span>';
+      
+      jsonld.itemListElement.push({
+        '@type': 'ListItem',
+        'position': i+2,
+        'name': breadcrumb[i],
+        'item': category_url
+      });
     } else {
       new_breadcrumb_html += '<span class="breadcrumb-child">'+breadcrumb[i]+'</span>';
     }
-    jsonld.itemListElement.push({
-      '@type': 'ListItem',
-      'position': i+2,
-      'name': breadcrumb[i],
-      'item': category_url
-    });
     var jsonldTag = $('<script type="application/ld+json"></script>');
     jsonldTag.append(JSON.stringify(jsonld));
     $('title').after(jsonldTag);
