@@ -26,8 +26,8 @@ function remapBreadcrumb(breadcrumb){
   if(new_breadcrumb_html != '') {
     $('#top-box > div.breadcrumb > div.breadcrumb-inner > span.breadcrumb-child:first').prop('outerHTML',new_breadcrumb_html);
   }
-  var jsonldTag = $('<script type="application/ld+json></script>');
-  jsonldTag.innerHtml(JSON.stringify(jsonld));
+  var jsonldTag = $('<script type="application/ld+json"></script>');
+  jsonldTag.append(JSON.stringify(jsonld));
   $('title').after(jsonldTq);
 }
 
@@ -55,7 +55,7 @@ function remapCategoryBreadcrumb(breadcrumb) {
       for(var j=0;j<=i;j++) {
         url_category[j]=breadcrumb[j];
       }
-      new_breadcrumb_html += '<span class="breadcrumb-child"><a class="breadcrumb-child-link" href="https://'+host+'/archive/category/'+url_category.join('-')+'" itemprop="url"><span itemprop="title">'+breadcrumb[i]+'</span></a></span>';
+      new_breadcrumb_html += '<span class="breadcrumb-child"><a class="breadcrumb-child-link" href="https://'+host+'/archive/category/'+url_category.join('-')+'">'+breadcrumb[i]+'</span></a></span>';
       new_breadcrumb_html += '<span class="breadcrumb-gt"> &gt;</span>';
     } else {
       new_breadcrumb_html += '<span class="breadcrumb-child">'+breadcrumb[i]+'</span>';
