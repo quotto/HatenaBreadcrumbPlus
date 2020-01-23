@@ -28,7 +28,7 @@ function remapBreadcrumb(breadcrumb){
   }
   var jsonldTag = $('<script type="application/ld+json"></script>');
   jsonldTag.append(JSON.stringify(jsonld));
-  $('title').after(jsonldTq);
+  $('title').after(jsonldTag);
 }
 
 function remapArticleCategory(categories) {
