@@ -1,4 +1,9 @@
 var host = $(location).attr('host');
+var jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  'itemListElement':[]
+}
 function remapBreadcrumb(breadcrumb){
   new_breadcrumb_html='';
   for(var i=0;i<breadcrumb.length;i++) {
@@ -6,14 +11,24 @@ function remapBreadcrumb(breadcrumb){
     for(var j=0;j<=i;j++) {
       url_category[j]=breadcrumb[j];
     }
-    new_breadcrumb_html += '<span class="breadcrumb-child" itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a class="breadcrumb-child-link" href="http://'+host+'/archive/category/'+url_category.join('-')+'" itemprop="url"><span itemprop="title">'+breadcrumb[i]+'</span></a></span>';
+    var category_url = 'https://'+host+'/archive/category/'+url_category.join('-');
+    new_breadcrumb_html += '<span class="breadcrumb-child""><a class="breadcrumb-child-link" href="'+category_url+'"><span>'+breadcrumb[i]+'</span></a></span>';
     if(i+1<breadcrumb.length) {
       new_breadcrumb_html += '<span class="breadcrumb-gt"> &gt;</span>';
     }
+    jsonld.itemListElement.push({
+      '@type': 'ListItem',
+      'position': i,
+      'name': breadcrumb[i],
+      'item': category_url
+    });
   }
   if(new_breadcrumb_html != '') {
     $('#top-box > div.breadcrumb > div.breadcrumb-inner > span.breadcrumb-child:first').prop('outerHTML',new_breadcrumb_html);
   }
+  var jsonldTag = $('<script type="application/ld+json></script>');
+  jsonldTag.innerHtml(JSON.stringify(jsonld));
+  $('title').after(jsonldTq);
 }
 
 function remapArticleCategory(categories) {
@@ -40,10 +55,10 @@ function remapCategoryBreadcrumb(breadcrumb) {
       for(var j=0;j<=i;j++) {
         url_category[j]=breadcrumb[j];
       }
-      new_breadcrumb_html += '<span class="breadcrumb-child" itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a class="breadcrumb-child-link" href="http://'+host+'/archive/category/'+url_category.join('-')+'" itemprop="url"><span itemprop="title">'+breadcrumb[i]+'</span></a></span>';
+      new_breadcrumb_html += '<span class="breadcrumb-child"><a class="breadcrumb-child-link" href="https://'+host+'/archive/category/'+url_category.join('-')+'" itemprop="url"><span itemprop="title">'+breadcrumb[i]+'</span></a></span>';
       new_breadcrumb_html += '<span class="breadcrumb-gt"> &gt;</span>';
     } else {
-      new_breadcrumb_html += '<span class="breadcrumb-child" itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">'+breadcrumb[i]+'</span>';
+      new_breadcrumb_html += '<span class="breadcrumb-child">'+breadcrumb[i]+'</span>';
     }
   }
   if(new_breadcrumb_html != '') {
