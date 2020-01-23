@@ -84,7 +84,7 @@ function remapCategoryBreadcrumb(breadcrumb) {
         '@type': 'ListItem',
         'position': i+2,
         'name': breadcrumb[i],
-        'item': category_url
+        'item': location.href
       });
     }
   }
