@@ -24,7 +24,7 @@ function remapBreadcrumb(breadcrumb){
     jsonld.itemListElement.push({
       '@type': 'ListItem',
       'position': i+2,
-      'name': breadcrumb[i],
+      'name': url_category[i],
       'item': category_url
     });
   }
@@ -67,19 +67,19 @@ function remapCategoryBreadcrumb(breadcrumb) {
       jsonld.itemListElement.push({
         '@type': 'ListItem',
         'position': i+2,
-        'name': breadcrumb[i],
+        'name': url_category[i],
         'item': category_url
       });
     } else {
       new_breadcrumb_html += '<span class="breadcrumb-child">'+breadcrumb[i]+'</span>';
     }
-    var jsonldTag = $('<script type="application/ld+json"></script>');
-    jsonldTag.append(JSON.stringify(jsonld));
-    $('title').after(jsonldTag);
   }
   if(new_breadcrumb_html != '') {
     $('#top-box > div.breadcrumb > div.breadcrumb-inner > span.breadcrumb-child:first').prop('outerHTML',new_breadcrumb_html);
   }
+  var jsonldTag = $('<script type="application/ld+json"></script>');
+  jsonldTag.append(JSON.stringify(jsonld));
+  $('title').after(jsonldTag);
 }
 
 function remapArchiveCategory(categories) {
