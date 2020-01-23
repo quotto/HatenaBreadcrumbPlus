@@ -31,6 +31,14 @@ function remapBreadcrumb(breadcrumb){
   if(new_breadcrumb_html != '') {
     $('#top-box > div.breadcrumb > div.breadcrumb-inner > span.breadcrumb-child:first').prop('outerHTML',new_breadcrumb_html);
   }
+
+  // 記事本体のマークアップを追加
+  jsonld.itemListElement.push({
+    '@type': 'ListItem',
+    'position': breadcrumb.length+2,
+    'name': $('title').text(),
+    'item': location.href
+  });
   var jsonldTag = $('<script type="application/ld+json"></script>');
   jsonldTag.append(JSON.stringify(jsonld));
   $('title').after(jsonldTag);
@@ -72,6 +80,12 @@ function remapCategoryBreadcrumb(breadcrumb) {
       });
     } else {
       new_breadcrumb_html += '<span class="breadcrumb-child">'+breadcrumb[i]+'</span>';
+      jsonld.itemListElement.push({
+        '@type': 'ListItem',
+        'position': i+2,
+        'name': breadcrumb[i],
+        'item': category_url
+      });
     }
   }
   if(new_breadcrumb_html != '') {
